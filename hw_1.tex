@@ -117,9 +117,9 @@
 	      	\end{tikzpicture}
 	      \end{center}
 	      	         	
-	\item [1.4]
-	      	       
-	      \begin{enumerate}
+	\item [1.4] Hello
+	      	      
+		\begin{enumerate}
 	      	\item [(a)] {\normalfont Here, the two DFAs are:}
 	      	      \begin{figure}[hbp]
 	      	      	\centering
@@ -299,11 +299,202 @@
 	      \end{center}
 	      \end{figure}
 	      
-	      \item [e] The two DFAs are
+	      \clearpage
+	      \item [(e)] {\normalfont The two DFAs are}
 	      
+	      \begin{figure}[hbp]	      	      		      	    
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state, initial] (p_1)   {$p_1$}; 
+	      	      			\node[state, accepting] (p_2) [right=of p_1] {$p_2$}; 
+	      	      			\node[state] (p_3) [below=of p_1] {$p_3$};
+	      	      			
+	      	      			\path[->] 
+	      	      			(p_1) 	edge [bend right=45] node {a} (p_2)
+	      	      					edge [bend right=45] node {b} (p_3)
+	      	      			(p_2) 	edge [loop above] node {a,b} ()
+							(p_3) 	edge [loop below] node {a,b} ();
+	      	      			
+	      	      				      	      			
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ starts with an a\}}
+	      	      	\end{subfigure}\hfill
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state,initial, accepting] (q_1)   {$q_1$}; 
+	      	      			\node[state, accepting] (q_2) [right=of q_1] {$q_2$}; 
+	      	      			\node[state] (q_3) [right=of q_2] {$q_3$};
+	      	      		
+	      	      			
+	      	      			\path[->] 
+	      	      			(q_1) 	edge node {b} (q_2)
+	      	      					edge [loop above] node {a} ()
+	      	      			(q_2) 	edge node {b} (q_3)
+			      	      			edge [loop above] node {a} ()
+							(q_3) 	edge [loop above] node {a,b} ();
+	      	    
+	      	      			
+	      	      				      	      			
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ has at most one b\}}
+	      	      	\end{subfigure}\\
+	      	      \end{figure}
+	      
+	       \clearpage
+	       
+	      \item [(f)] {\normalfont The two DFAs are} 
+	      
+	      \begin{figure}[hbp]	      	      		      	    
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state,initial] (p_1)   {$p_1$}; 
+	      	      			\node[state, accepting] (p_2) [right=of p_1] {$p_2$}; 
+	
+	      	      		
+	      	      			
+	      	      			\path[->] 
+	      	      			(p_1) 	edge [bend right=45] node {a} (p_2)
+	      	      					edge [loop above] node {b} ()
+	      	      			(p_2) 	edge [bend right=45] node {a} (p_1)
+			      	      			edge [loop above] node {b} ();
+			      	      			
+	      	      				
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ has an odd number of a's\}}
+	      	      	\end{subfigure}\hfill
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state,initial] (q_1)   {$q_1$}; 
+	      	      			\node[state, accepting] (q_2) [right=of q_1] {$q_2$}; 
+	
+	      	      		
+	      	      			
+	      	      			\path[->] 
+	      	      			(q_1) 	edge [bend right=45] node {b} (q_2)
+	      	      					edge [loop above] node {a} ()
+	      	      			(q_2) 	edge [bend right=45] node {a} (q_1)
+			      	      			edge [loop above] node {b} ();
+
+	      	    
+	      	      			
+	      	      				      	      			
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ ends with b\}}
+	      	      	\end{subfigure}\\
+	      	      \end{figure}
+	      
+			  
+	      	      {\normalfont The combined DFA is as follows:}
+	      	      
+	      	      \begin{figure} [hbp]
+	      	     
+	      	     \begin{center}
+	      	\begin{tikzpicture}[shorten >=1pt,node distance=3cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      			      		  
+	      		\node[state,initial] (a)   {$p_1q_1$}; 
+	      		\node[state] (b) [right=of a] {$p_2q_1$};
+	      		
+	      		\node[state] (e) [above=of a] {$p_1q_2$};
+	      		\node[state, accepting] (f) [below=of b] {$p_2q_2$};
+	      		
+	      		
+	      		
+	      		\path[->] 
+	      	      	(a) 	edge [bend right=45] node {a} (b)
+							edge node {b} (e)
+					(b) 	edge node {b} (f)
+							edge [bend right=45] node {a} (a)
+					
+					(e) 	edge [bend left=45] node {a} (b)
+							edge [loop above] node {b} ()
+					(f) 	edge [bend left=45] node {a} (a)
+							edge [loop below] node {b} ();
+	      	\end{tikzpicture}
+	      	
+	      	\caption{Combined DFA of the two Languages}
+	      \end{center}
+	      \end{figure}
+
+		\clearpage
+	      \item [(g)] {\normalfont The two DFAs are} 
+	      
+	      \begin{figure}[hbp]	      	      		      	    
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state,initial, accepting] (p_1)   {$p_1$}; 
+	      	      			\node[state] (p_2) [right=of p_1] {$p_2$}; 
+	
+	      	      		
+	      	      			
+	      	      			\path[->] 
+	      	      			(p_1) 	edge [bend right=60] node {a,b} (p_2)
+	      	      			(p_2) 	edge [bend right=60] node {a,b} (p_1);
+			      	      			      	      				
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ has even length b\}}
+	      	      	\end{subfigure}\hfill
+	      	      	\begin{subfigure}[apple] {0.5\textwidth}  	      	
+	      	      		\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      	      			\node[state,initial] (q_1)   {$q_1$}; 
+	      	      			\node[state, accepting] (q_2) [right=of q_1] {$q_2$}; 
+	
+	      	      		
+	      	      			
+	      	      			\path[->] 
+	      	      			(q_1) 	edge [bend right=45] node {a} (q_2)
+	      	      					edge [loop above] node {b} ()
+	      	      			(q_2) 	edge [bend right=45] node {a} (q_1)
+			      	      			edge [loop above] node {b} ();
+			      	      			
+	      	      				
+	      	      		\end{tikzpicture}	
+	      	      		\caption{\{$w | w$ has an odd number of a's\}}
+	      	      	\end{subfigure}\\
+	      	      \end{figure}
+	      
+			  
+	      	      {\normalfont The combined DFA is as follows:}
+	      	      
+	      	      \begin{figure} [hbp]
+	      	     
+	      	     \begin{center}
+	      	\begin{tikzpicture}[shorten >=1pt,node distance=4cm,on grid,auto, every loop/.style={<-,shorten <=1pt}]
+	      			      		  
+	      		\node[state,initial] (a)   {$p_1q_1$}; 
+	      		\node[state] (b) [right=of a] {$p_2q_1$};
+	      		
+	      		\node[state, accepting] (e) [below=of b] {$p_1q_2$};
+	      		\node[state] (f) [below=of a] {$p_2q_2$};
+	      		
+	      		
+	      		
+	      		\path[->] 
+	      	      	(a) 	edge node {a} (f)
+							edge [bend left=45] node {b} (b)
+							
+					(b) 	edge  node {b} (a)
+							edge [bend left=45] node {a} (e)
+					
+					(f) 	edge node {b} (e)
+							edge [bend left=45] node {a} (a)
+
+					(e) 	edge [bend left=45] node {b} (f)
+							edge  node {a} (b);
+	      	\end{tikzpicture}
+	      	
+	      	\caption{Combined DFA of the two Languages}
+	      \end{center}
+	      \end{figure}
 	      
 	      \end{enumerate}
-	      	       		
+      
+	      
+	\item [1.6] 
+	      		\begin{enumerate}
+	      			\item [(a)] {\normalfont The two DFAs are} 
+	      
+	      		\end{enumerate}
+	      	     
 \end{enumerate} 
  
 \end{document}
